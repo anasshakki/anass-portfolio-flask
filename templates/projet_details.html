@@ -1,0 +1,40 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Projet : {{ projet.nom }}{% endblock %}
+
+{% block content %}
+    <section class="section-details">
+        <a href="{{ url_for('liste_projets') }}" class="btn-back">← Retour aux Projets</a>
+        
+        <h1>{{ projet.nom }}</h1>
+        
+        <p class="details-tech"><strong>Technologies utilisées :</strong> {{ projet.tech }}</p>
+        
+        <p class="details-description">{{ projet.description }}</p>
+
+        <div class="details-grid">
+            
+            <div class="points-cles">
+                <h2>Points Clés du Développement</h2>
+                <ul>
+                    {% for detail in projet.details %}
+                        <li><strong>{{ detail.titre }} :</strong> {{ detail.texte }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="photos">
+                <h2>Captures d'Écran</h2>
+                {% for img in projet.images %}
+                    <img src="{{ url_for('static', filename='img/' + img) }}" alt="Capture de {{ projet.nom }}" class="capture-img">
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section-github">
+            <h2>Code Source</h2>
+            <p>Le code complet de ce projet est disponible sur GitHub.</p>
+            <a href="{{ projet.github_url }}" class="btn-github" target="_blank">Accéder au Répertoire GitHub</a>
+        </div>
+    </section>
+{% endblock %}

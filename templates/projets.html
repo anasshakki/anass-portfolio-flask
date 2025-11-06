@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Mes Projets{% endblock %}
+
+{% block content %}
+    <section class="section-projets">
+        <h2>Mes Réalisations Techniques</h2>
+        
+        <div class="projets-grid">
+            {% for projet in projets %}
+                <div class="card-projet">
+                    <h3>{{ projet.nom }}</h3>
+                    <p>{{ projet.description }}</p>
+                    <p class="tech-stack">**Technologies :** {{ projet.tech }}</p>
+                    
+                    <a href="{{ url_for('details_projet', id=projet.id) }}" class="btn-details">Voir le Projet</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if not projets %}
+            <p>Aucun projet n'a encore été ajouté.</p>
+        {% endif %}
+    </section>
+{% endblock %}
