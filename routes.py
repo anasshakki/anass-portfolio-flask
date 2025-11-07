@@ -25,7 +25,7 @@ PROJETS = [
         'description': 'Développement d\'une application web full-stack minimaliste pour la vente de parfums, incluant la gestion du catalogue et la simulation d\'un processus d\'achat.', 
         'tech': 'Flask, Jinja2, HTML/CSS', 
         'annee': 2025,
-        'github_url': 'https://github.com/anasshakki', # REMPLACER PAR VOTRE VRAI LIEN
+        'github_url': 'https://github.com/anasshakki', 
         'details': [
             {'titre': 'Conception de l\'Architecture', 'texte': 'Mise en place d\'un micro-service Flask modulaire, séparant la logique des routes, des données statiques et des vues HTML.'},
             {'titre': 'Gestion du Panier', 'texte': 'Implémentation d\'une logique de session (variable globale) pour suivre les articles ajoutés par l\'utilisateur et calculer le prix total.'},
@@ -39,8 +39,7 @@ PROJETS = [
         'description': 'Application web de type To-do List développée pour la gestion simple des tâches : ajout, modification, suppression et suivi du statut (terminé/en attente).', 
         'tech': 'Flask, SQLite, HTML/CSS, JavaScript', 
         'annee': 2024,
-        'github_url': 'https://github.com/anasshakki', # REMPLACER PAR VOTRE VRAI LIEN
-        'details': [
+        'github_url': 'https://github.com/anasshakki', 'details': [
             {'titre': 'Architecture et Persistence', 'texte': 'Développement en Flask avec une base de données SQLite pour un stockage léger et intégré des informations des tâches.'},
             {'titre': 'Fonctionnalités CRUD', 'texte': 'Implémentation complète des opérations (Ajouter, Afficher, Modifier, Supprimer) et gestion du statut des tâches.'},
             {'titre': 'Interface Utilisateur', 'texte': 'Style simple en HTML/CSS, avec utilisation de JavaScript pour des effets visuels (comme l\'effet de suppression).'}
@@ -53,7 +52,7 @@ PROJETS = [
         'description': 'Application web full-stack simple mais complète pour gérer et publier des articles de blog, avec authentification sécurisée et gestion des sessions.', 
         'tech': 'Node.js, Express, SQLite, EJS, bcryptjs', 
         'annee': 2024,
-        'github_url': 'https://github.com/anasshakki', # REMPLACER PAR VOTRE VRAI LIEN
+        'github_url': 'https://github.com/anasshakki',
         'details': [
             {'titre': 'Architecture Serveur', 'texte': 'Utilisation de Node.js et du framework Express pour la création du serveur et la gestion des routes côté Backend.'},
             {'titre': 'Authentification Sécurisée', 'texte': 'Implémentation complète de l\'inscription, la connexion et la déconnexion, avec hachage des mots de passe (bcryptjs) et gestion des sessions utilisateur.'},
