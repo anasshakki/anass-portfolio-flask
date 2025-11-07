@@ -1,36 +1,39 @@
-﻿<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Anass HAKKI | Portfolio{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <header class="navbar">
+﻿{% extends "base.html" %}
+
+{% block title %}Accueil - Anass HAKKI{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <img src="{{ url_for('static', filename='img/profil.jpeg') }}" alt="Photo de profil Anass" class="profile-img">
         
-        <div class="header-icons">
-            <img src="{{ url_for('static', filename='img/icons/python-brands-solid-full.svg') }}" alt="Python" class="nav-icon">
-            <img src="{{ url_for('static', filename='img/icons/java-brands-solid-full.svg') }}" alt="Java" class="nav-icon">
-            <img src="{{ url_for('static', filename='img/icons/node-js-brands-solid-full.svg') }}" alt="Node.js" class="nav-icon">
-            <img src="{{ url_for('static', filename='img/icons/database-solid-full.svg') }}" alt="SQL" class="nav-icon">
+        <h1>Bonjour, C'est Anass</h1>
+        <p class="tagline">Étudiant en cycle d'ingénieur en Informatique.</p>
+        <p>Passionné par le développement Fullstack et l'architecture logicielle. Ce portfolio présente mes réalisations académiques et personnelles.</p>
+        
+        <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
+    </section>
+
+    <section class="section-cv">
+        <h2>Mon CV / Compétences Clés</h2>
+        <div class="cv-content">
+            <div class="competences">
+                <h3>Compétences Techniques</h3>
+                <ul>
+                    <li><strong>Langages :</strong> Python, Java, C, JavaScript, SQL</li>
+                    <li><strong>Frameworks :</strong> Flask, Spring Boot (base)</li>
+                    <li><strong>Bases de Données :</strong> MySQL, PostgreSQL, SQLite</li>
+                    <li><strong>Outils :</strong> Git, Docker (base), Linux</li>
+                </ul>
+            </div>
+            <div class="formation">
+                <h3>Formation</h3>
+                <p><strong>Cycle d'Ingénieur en Génie Informatique</strong></p>
+                <p>Polytech Marseille</p>
+            </div>
         </div>
         
-        <nav>
-            <a href="{{ url_for('index') }}">Accueil</a>
-            <a href="{{ url_for('liste_projets') }}">Projets</a>
-            <a href="{{ url_for('contact') }}">Contact</a>
-            
-            <a href="https://github.com/anasshakki" target="_blank" class="github-nav-link">GitHub Profile</a> 
-        </nav>
-    </header>
-
-    <main id="content">
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Anass HAKKI - Ingénieur en Génie Informatique</p>
-    </footer>
-</body>
-</html>
+        <a href="{{ url_for('static', filename='img/Anass_CV.pdf') }}" 
+           class="btn-secondary" 
+           target="_blank">Télécharger le CV</a>
+    </section>
+{% endblock %}
