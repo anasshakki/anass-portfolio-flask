@@ -1,65 +1,36 @@
-﻿{% extends "base.html" %}
-
-{% block title %}Accueil - Anass HAKKI{% endblock %}
-
-{% block content %}
-    <section class="hero-section">
-        <img src="{{ url_for('static', filename='img/profil.jpeg') }}" alt="Photo de profil Anass" class="profile-img">
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Anass HAKKI | Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="navbar">
         
-        <h1>Bonjour, C'est Anass</h1>
-        <p class="tagline">Étudiant Ingénieur en Informatique (Alternance).</p>
-        <p>Passionné par le développement Fullstack et l'architecture logicielle. Ce portfolio présente mes réalisations académiques et personnelles.</p>
-        
-        <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
-    </section>
-    
-    <section class="skills-section">
-        <h2>Mes Compétences Techniques</h2>
-
-        <div class="skills-category">
-            <h3>Langages de Programmation</h3>
-            <div class="skill-icons-grid">
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/java-brands-solid-full.svg') }}" alt="Java Logo"><p>Java</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/python-brands-solid-full.svg') }}" alt="Python Logo"><p>Python</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/js-brands-solid-full.svg') }}" alt="JavaScript Logo"><p>JavaScript</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/c-solid-full.svg') }}" alt="C Logo"><p>C/C++</p></div>
-            </div>
-        </div>
-
-        <div class="skills-category">
-            <h3>Développement Web & Frameworks</h3>
-            <div class="skill-icons-grid">
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/html5-brands-solid-full.svg') }}" alt="HTML5 Logo"><p>HTML5</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/css-brands-solid-full.svg') }}" alt="CSS3 Logo"><p>CSS3</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/node-js-brands-solid-full.svg') }}" alt="Node.js Logo"><p>Node.js / Express.js</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/vuejs.svg') }}" alt="Vue.js Logo"><p>Vue.js</p></div>
-            </div>
-        </div>
-
-        <div class="skills-category">
-            <h3>Bases de Données & Outils</h3>
-            <div class="skill-icons-grid">
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/database-solid-full.svg') }}" alt="SQL Logo"><p>MySQL / PostgreSQL</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/git-brands-solid-full.svg') }}" alt="Git Logo"><p>Git</p></div>
-                <div class="skill-item"><img src="{{ url_for('static', filename='img/icons/docker-brands-solid-full.svg') }}" alt="Docker Logo"><p>Docker</p></div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section-cv">
-        <h2>Formation / CV</h2>
-        <div class="cv-content">
-            <div class="formation">
-                <h3>Formation</h3>
-                <p><strong>Cycle d'Ingénieur en Génie Informatique (Alternance)</strong></p>
-                <p>Polytech Marseille</p>
-                <p class="periode">Septembre 2023 – Septembre 2026</p>
-            </div>
+        <div class="header-icons">
+            <img src="{{ url_for('static', filename='img/icons/python-brands-solid-full.svg') }}" alt="Python" class="nav-icon">
+            <img src="{{ url_for('static', filename='img/icons/java-brands-solid-full.svg') }}" alt="Java" class="nav-icon">
+            <img src="{{ url_for('static', filename='img/icons/node-js-brands-solid-full.svg') }}" alt="Node.js" class="nav-icon">
+            <img src="{{ url_for('static', filename='img/icons/database-solid-full.svg') }}" alt="SQL" class="nav-icon">
         </div>
         
-        <a href="{{ url_for('static', filename='img/Anass_CV.pdf') }}" 
-           class="btn-secondary" 
-           target="_blank">Télécharger le CV</a>
-    </section>
+        <nav>
+            <a href="{{ url_for('index') }}">Accueil</a>
+            <a href="{{ url_for('liste_projets') }}">Projets</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            
+            <a href="https://github.com/anasshakki" target="_blank" class="github-nav-link">GitHub Profile</a> 
+        </nav>
+    </header>
 
-{% endblock %}
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Anass HAKKI - Ingénieur en Génie Informatique</p>
+    </footer>
+</body>
+</html>
