@@ -58,7 +58,7 @@ PROJETS = [
             {'titre': 'Authentification Sécurisée', 'texte': 'Implémentation complète de l\'inscription, la connexion et la déconnexion, avec hachage des mots de passe (bcryptjs) et gestion des sessions utilisateur.'},
             {'titre': 'Gestion des Articles (CRUD)', 'texte': 'Fonctionnalités permettant de créer, éditer et supprimer des articles de blog, avec protection des routes réservées aux membres connectés.'}
         ],
-        'images': ['projet4_photo1.webp', 'projet4_photo2.jpg', 'projet4_photo3.jpg'] 
+        'images': ['projet4_photo1.webp', 'projet4_photo2.png', 'projet4_photo3.jpg'] 
     }
 ]
 
