@@ -46,20 +46,24 @@ PROJETS = [
         ],
         'images': ['projet3_photo1.png', 'projet3_photo2.png', 'projet3_photo3.png'] 
     },
+   
+    #
     {
         'id': 4, 
-        'nom': 'Mini Blog – Application Web Node.js', 
-        'description': 'Application web full-stack simple mais complète pour gérer et publier des articles de blog, avec authentification sécurisée et gestion des sessions.', 
-        'tech': 'Node.js, Express, SQLite, EJS, bcryptjs', 
+        'nom': "Mini Blog 'Pensées Éclair' (Node.js)", 
+        'description': "Application web full-stack de type blog, conçue pour être à la fois simple et fonctionnelle. Met en œuvre un serveur Node.js/Express connecté à une base de données NoSQL (MongoDB) pour une gestion complète et dynamique des articles.", 
+        'tech': 'Node.js, Express, MongoDB, Mongoose, EJS, Bootstrap 5, CSS', 
         'annee': 2024,
-        'github_url': 'https://github.com/anasshakki',
+        'github_url': 'https://github.com/anasshakki/mon-mini-blog', # Mettez le bon lien GitHub ici
         'details': [
-            {'titre': 'Architecture Serveur', 'texte': 'Utilisation de Node.js et du framework Express pour la création du serveur et la gestion des routes côté Backend.'},
-            {'titre': 'Authentification Sécurisée', 'texte': 'Implémentation complète de l\'inscription, la connexion et la déconnexion, avec hachage des mots de passe (bcryptjs) et gestion des sessions utilisateur.'},
-            {'titre': 'Gestion des Articles (CRUD)', 'texte': 'Fonctionnalités permettant de créer, éditer et supprimer des articles de blog, avec protection des routes réservées aux membres connectés.'}
+            {'titre': 'Architecture Serveur', 'texte': 'Utilisation de Node.js et du framework Express pour la création du serveur et la gestion des routes RESTful côté Backend.'},
+            {'titre': 'Base de Données NoSQL', 'texte': "Intégration d'une base de données MongoDB avec l'ORM Mongoose pour la modélisation flexible et la persistance des données des articles."},
+            {'titre': 'Gestion des Articles (CRUD)', 'texte': "Implémentation des fonctionnalités complètes permettant de Créer, Lire, Modifier (Update) et Supprimer (Delete) des articles, avec rendu des pages côté serveur via EJS."},
+            {'titre': 'Design Responsive & Moderne', 'texte': "Utilisation de Bootstrap 5 et de CSS personnalisé (thème rose, polices modernes, logo, et animations de survol) pour une interface utilisateur réactive et soignée."}
         ],
-        'images': ['projet4_photo1.webp', 'projet4_photo2.png', 'projet4_photo3.jpg'] 
-    }
+        'images': ['projet4_photo1.png', 'projet4_photo2.png', 'projet4_photo3.png']     }
+    
+    #
 ]
 
 @app.route('/')
