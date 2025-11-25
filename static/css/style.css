@@ -1,11 +1,11 @@
 ﻿/* static/css/style.css */
 
 :root {
-    --couleur-primaire: #00ADB5; /* Bleu-vert/Cyan Moderne (Accent) */
-    --couleur-secondaire: #393E46; /* Gris foncé/Anthracite (Arrière-plan principal) */
-    --couleur-fond: #222831;     /* Noir très foncé (Fond) */
-    --couleur-texte: #EEEEEE;    /* Blanc cassé */
-    --couleur-card: var(--couleur-secondaire); /* Utilise la couleur secondaire pour les cartes */
+    --couleur-primaire: #00ADB5;   /* Bleu-vert/Cyan Moderne (Accent) */
+    --couleur-secondaire: #393E46; /* Gris foncé (Arrière-plan blocs) */
+    --couleur-fond: #222831;       /* Noir très foncé (Fond page) */
+    --couleur-texte: #EEEEEE;      /* Blanc cassé */
+    --couleur-card: var(--couleur-secondaire);
 }
 
 /* --- Général --- */
@@ -15,6 +15,7 @@ body {
     padding: 0;
     background-color: var(--couleur-fond);
     color: var(--couleur-texte);
+    line-height: 1.6;
 }
 
 main {
@@ -24,7 +25,7 @@ main {
 }
 
 h1, h2, h3 {
-    color: var(--couleur-primaire); /* Titres en couleur d'accent */
+    color: var(--couleur-primaire);
 }
 
 h2 {
@@ -32,6 +33,11 @@ h2 {
     padding-bottom: 10px;
     margin-bottom: 30px;
     font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* --- Navigation --- */
@@ -48,13 +54,11 @@ h2 {
     font-size: 1.6em;
     font-weight: 700;
     color: var(--couleur-primaire);
-    text-decoration: none;
 }
 
 nav a {
     color: var(--couleur-texte); 
     margin-left: 25px;
-    text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -70,35 +74,58 @@ nav a:hover {
     color: var(--couleur-secondaire); 
     padding: 12px 25px;
     border-radius: 5px;
-    text-decoration: none;
     font-weight: 700; 
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
     border: none;
     cursor: pointer;
+    margin-top: 15px;
 }
 
-.btn-primary:hover, .btn-details:hover, .btn-secondary:hover {
-    background-color: #007980; /* Teinte plus foncée au survol */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--couleur-primaire);
+    color: var(--couleur-primaire);
+}
+
+.btn-primary:hover, .btn-details:hover {
+    background-color: #007980;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-secondaire);
 }
 
 /* --- Page d'Accueil (Hero) --- */
-.hero-section {
+/* ATTENTION : J'ai renommé .hero-section en .hero pour correspondre au HTML */
+.hero {
     text-align: center;
     padding: 60px 0;
     margin-top: 30px; 
 }
 
-.profile-img {
-    width: 180px; 
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
+.profile-pic-container {
     margin-bottom: 30px;
-    border: 5px solid var(--couleur-primaire); 
-    box-shadow: 0 0 20px rgba(0, 173, 181, 0.4);
 }
 
-.hero-section h1 {
+/* ATTENTION : J'ai renommé .profile-img en .profile-pic pour correspondre au HTML */
+.profile-pic {
+    width: 160px;        /* Taille fixe */
+    height: 160px;       /* Hauteur identique pour faire un carré */
+    border-radius: 50%;  /* Rend l'image ronde */
+    object-fit: cover;   /* Coupe l'image proprement */
+    
+    border: 4px solid var(--couleur-primaire); 
+    box-shadow: 0 0 20px rgba(0, 173, 181, 0.4);
+    transition: transform 0.3s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05); /* Petit effet de zoom au survol */
+}
+
+.hero h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
     color: white; 
@@ -108,7 +135,13 @@ nav a:hover {
     font-size: 1.2em;
     font-weight: 400;
     color: #DDDDDD; 
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+}
+
+.description {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #aaaaaa;
 }
 
 /* --- Section CV --- */
@@ -123,10 +156,12 @@ nav a:hover {
     gap: 40px;
     justify-content: space-between;
     margin-bottom: 30px;
+    flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
 }
 
 .competences, .formation {
     flex: 1;
+    min-width: 300px; /* Évite que ce soit trop petit sur mobile */
     background-color: var(--couleur-secondaire);
     padding: 25px;
     border-radius: 8px;
@@ -139,9 +174,13 @@ nav a:hover {
 }
 
 .competences li {
-    padding: 8px 0;
-    border-bottom: 1px dotted #444;
+    padding: 10px 0;
+    border-bottom: 1px dotted #555;
     font-size: 0.95em;
+}
+
+.competences li strong {
+    color: var(--couleur-primaire);
 }
 
 /* --- Projets --- */
@@ -152,12 +191,15 @@ nav a:hover {
 }
 
 .card-projet {
-    background-color: var(--couleur-card); /* Utilisation de la variable */
+    background-color: var(--couleur-card);
     padding: 25px;
     border-radius: 10px; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
     border-top: 5px solid var(--couleur-primaire); 
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-projet:hover {
@@ -169,76 +211,7 @@ nav a:hover {
     font-size: 0.9em;
     color: #999999;
     margin-bottom: 15px;
-}
-
-/* --- Détails du Projet --- */
-.section-details {
-    padding: 20px 0;
-}
-
-.btn-back {
-    display: inline-block;
-    color: var(--couleur-primaire);
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-.details-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 40px;
-    margin-top: 30px;
-}
-
-/* Gestion du responsive pour les photos (qui peut être un élément de la grille) */
-.photos {
-    grid-column: span 2; 
-}
-
-@media (min-width: 768px) {
-    .photos {
-        grid-column: 2 / 3; /* Placer les photos dans la 2ème colonne sur grand écran */
-    }
-}
-
-.capture-img {
-    width: 100%;
-    /* Reste nécessaire pour gérer les images qui sont très grandes/longues */
-    max-height: 400px; 
-    object-fit: contain; 
-    
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.section-github {
-    text-align: center;
-    padding: 30px 0;
-    border-top: 1px solid #444;
-    margin-top: 40px;
-}
-
-.btn-github {
-    background-color: var(--couleur-primaire);
-    color: var(--couleur-fond);
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1em;
-    transition: opacity 0.3s;
-}
-
-.btn-github:hover {
-    opacity: 0.9;
+    font-style: italic;
 }
 
 /* --- Pied de page --- */

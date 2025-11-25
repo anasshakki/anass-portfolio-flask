@@ -5,15 +5,19 @@
 {% block content %}
     <section class="hero">
         <div class="profile-pic-container">
-            <img src="{{ url_for('static', filename='img/profil.jpeg') }}" alt="Photo de profil d'Anass" class="profile-pic">
+            <img src="{{ url_for('static', filename='img/profil.jpeg') }}" 
+                 alt="Photo de profil d'Anass" 
+                 class="profile-pic"
+                 style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
         </div>
         
         <h1>Bonjour, C'est Anass</h1>
         
-        <p class="tagline">Étudiant en cycle d'ingénieur en Informatique.</p>
+        <p class="tagline">Élève Ingénieur en Génie Informatique (Polytech Marseille)</p>
         
         <p class="description">
-            Passionné par le développement Fullstack et l'architecture logicielle. Ce portfolio présente mes réalisations académiques et personnelles.
+            Passionné par le développement Fullstack (Angular/Node.js) et l'architecture logicielle. 
+            Ce portfolio présente mes projets académiques et personnels.
         </p>
         
         <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
@@ -25,16 +29,17 @@
             <div class="competences">
                 <h3>Compétences Techniques</h3>
                 <ul>
-                    <li><strong>Langages :</strong> Python, Java, C, JavaScript, SQL</li>
-                    <li><strong>Frameworks :</strong> Flask, Spring Boot (base)</li>
-                    <li><strong>Bases de Données :</strong> MySQL, PostgreSQL, SQLite</li>
-                    <li><strong>Outils :</strong> Git, Docker (base), Linux</li>
+                    <li><strong>Langages :</strong> Python, Java, TypeScript, JavaScript, SQL, C/C++</li>
+                    <li><strong>Web & Frameworks :</strong> Angular, Node.js, React.js, Flask, HTML/CSS</li>
+                    <li><strong>Outils & DevOps :</strong> Git, GitHub, Docker, Linux, Postman</li>
+                    <li><strong>Données :</strong> MySQL, PostgreSQL, Analyse de données</li>
                 </ul>
             </div>
             <div class="formation">
                 <h3>Formation</h3>
-                <p><strong>Cycle d'Ingénieur en Génie Informatique</strong></p>
-                <p>Polytech Marseille</p>
+                <p><strong>Cycle d'Ingénieur en Génie Informatique</strong><br>
+                Polytech Marseille (2025/2026)</p>
+                <p><em>CPGE - MPSI/MP (Mention Très Bien)</em></p>
             </div>
         </div>
         
