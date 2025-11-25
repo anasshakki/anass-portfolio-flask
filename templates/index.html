@@ -3,12 +3,18 @@
 {% block title %}Accueil - Anass HAKKI{% endblock %}
 
 {% block content %}
-    <section class="hero-section">
-        <img src="{{ url_for('static', filename='img/profil.jpeg') }}" alt="Photo de profil Anass" class="profile-img">
+    <section class="hero">
+        <div class="profile-pic-container">
+            <img src="{{ url_for('static', filename='img/Profil.jpeg') }}" alt="Photo de profil d'Anass" class="profile-pic">
+        </div>
         
         <h1>Bonjour, C'est Anass</h1>
+        
         <p class="tagline">Étudiant en cycle d'ingénieur en Informatique.</p>
-        <p>Passionné par le développement Fullstack et l'architecture logicielle. Ce portfolio présente mes réalisations académiques et personnelles.</p>
+        
+        <p class="description">
+            Passionné par le développement Fullstack et l'architecture logicielle. Ce portfolio présente mes réalisations académiques et personnelles.
+        </p>
         
         <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
     </section>
