@@ -98,11 +98,27 @@ nav a:hover {
 }
 
 /* --- Page d'Accueil (Hero) --- */
-/* ATTENTION : J'ai renommé .hero-section en .hero pour correspondre au HTML */
+
 .hero {
     text-align: center;
-    padding: 60px 0;
-    margin-top: 30px; 
+    /* On augmente le padding en haut pour décoller du menu */
+    padding-top: 120px; 
+    padding-bottom: 40px; /* On réduit l'espace en bas */
+    margin-top: 0;       
+    min-height: auto;     /* IMPORTANT : Empêche l'espace vide géant */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Nouveau bloc pour aligner les boutons */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;            /* Espace entre les deux boutons */
+    margin-top: 30px;
+    flex-wrap: wrap;      /* Pour mobile */
 }
 
 .profile-pic-container {
@@ -146,9 +162,9 @@ nav a:hover {
 
 /* --- Section CV --- */
 .section-cv {
-    padding: 40px 0;
-    margin-top: 50px;
-    border-top: 1px solid #444;
+    padding-top: 20px;    /* Réduit l'espace interne */
+    margin-top: 0;        /* Colle la section juste sous la hero */
+    border-top: none;     /* Enlève la ligne si tu veux que ce soit fluide */
 }
 
 .cv-content {
