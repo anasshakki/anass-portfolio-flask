@@ -6,7 +6,17 @@
     <section class="section-details">
         <a href="{{ url_for('liste_projets') }}" class="btn-back">← Retour aux Projets</a>
         
-        <h1>{{ projet.nom }}</h1>
+        <h1>
+    {{ projet.nom }}
+
+    {% if projet.pdf %}
+        <a href="{{ url_for('static', filename='pdf/' + projet.pdf) }}" 
+           class="btn-rose" 
+           target="_blank">
+           Voir la Présentation
+        </a>
+    {% endif %}
+</h1>
         
         <p class="details-tech"><strong>Technologies utilisées :</strong> {{ projet.tech }}</p>
         

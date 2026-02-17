@@ -1,4 +1,5 @@
 ﻿/* static/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
     --couleur-primaire: #00ADB5;   /* Bleu-vert/Cyan Moderne (Accent) */
@@ -125,7 +126,7 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* ATTENTION : J'ai renommé .profile-img en .profile-pic pour correspondre au HTML */
+
 .profile-pic {
     width: 160px;        /* Taille fixe */
     height: 160px;       /* Hauteur identique pour faire un carré */
@@ -155,6 +156,7 @@ nav a:hover {
 }
 
 .description {
+    font-family: 'Poppins', sans-serif;
     max-width: 600px;
     margin: 0 auto 30px auto;
     color: #aaaaaa;
@@ -238,4 +240,23 @@ footer {
     color: #999999;
     margin-top: 50px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+.btn-rose {
+    display: inline-block;
+    background-color: #ff007f; /* Rose standard */
+    color: white;
+    font-size: 16px;       /* Taille de texte NORMALE */
+    padding: 8px 20px;     /* Dimensions d'un bouton standard */
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 20px;     /* Espace entre le titre et le bouton */
+    vertical-align: middle; /* Pour bien s'aligner verticalement avec le texte */
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-rose:hover {
+    background-color: #d60068;
+    transform: translateY(-2px);
 }
