@@ -16,11 +16,17 @@
         <p class="tagline">Élève Ingénieur en Génie Informatique (Polytech Marseille)</p>
         
         <p class="description">
-            Passionné par le développement Fullstack (Angular/Node.js) et l'architecture logicielle, 
-            Ce portfolio présente mes projets académiques et personnels.
-        </p>
-        
-        <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
+    Passionné par <strong>l'Intelligence Artificielle, la Data Science et le développement Python</strong>, 
+    Ce portfolio présente mes projets académiques et personnels.
+</p>
+
+<div class="hero-actions">
+    <a href="{{ url_for('liste_projets') }}" class="btn-primary">Voir mes projets</a>
+    
+    <a href="{{ url_for('static', filename='img/Anass_CV.pdf') }}" 
+       class="btn-secondary" 
+       target="_blank">Télécharger le CV</a>
+</div>
     </section>
 
     <section class="section-cv">

@@ -1,0 +1,154 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+/* Définition de la structure */
+typedef struct {
+    double * coeff; /* Tableau des coefficients */
+    int K;          /* Ordre (degré) du polynôme */
+} Polynomial;
+
+/* 1. Création d'un polynôme d'ordre K initialisé à 0 */
+Polynomial * create_polynomial(int K) {
+    if (K < 0) return NULL;
+
+    // Allocation de la structure
+    Polynomial * p = (Polynomial *)malloc(sizeof(Polynomial));
+    if (p == NULL) {
+        fprintf(stderr, "Erreur d'allocation mémoire pour la structure.\n");
+        return NULL;
+    }
+
+    p->K = K;
+
+    // Allocation des coefficients.
+    // Attention : un polynôme d'ordre K a (K + 1) coefficients (de 0 à K).
+    // On utilise calloc pour initialiser directement à 0.
+    p->coeff = (double *)calloc(K + 1, sizeof(double));
+    
+    if (p->coeff == NULL) {
+        fprintf(stderr, "Erreur d'allocation mémoire pour les coefficients.\n");
+        free(p); // On libère la structure si le tableau échoue
+        return NULL;
+    }
+
+    return p;
+}
+
+/* 2. Libération de la mémoire */
+void free_polynomial(Polynomial * p) {
+    if (p != NULL) {
+        if (p->coeff != NULL) {
+            free(p->coeff); // Libérer le tableau d'abord
+        }
+        free(p); // Libérer la structure ensuite
+    }
+}
+
+/* 3. Modification d'un coefficient */
+void set_coefficient(Polynomial * p, int k, double c) {
+    if (p == NULL || p->coeff == NULL) return;
+    
+    // Vérification des bornes
+    if (k < 0 || k > p->K) {
+        fprintf(stderr, "Erreur : Indice %d hors bornes (Ordre max: %d)\n", k, p->K);
+        return;
+    }
+    
+    p->coeff[k] = c;
+}
+
+/* 4. Évaluation (Méthode de Horner) */
+double eval_polynomial(Polynomial * p, double x) {
+    if (p == NULL || p->coeff == NULL) return 0.0;
+
+    // Algorithme de Horner : plus efficace et stable numériquement
+    // P(x) = (...((a_n * x + a_{n-1}) * x + ... ) * x + a_0
+    double result = 0.0;
+    for (int i = p->K; i >= 0; i--) {
+        result = result * x + p->coeff[i];
+    }
+    return result;
+}
+
+/* 5. Dérivée première */
+Polynomial * diff_polynomial(Polynomial * p) {
+    if (p == NULL) return NULL;
+
+    // La dérivée d'un polynôme d'ordre K est d'ordre K-1.
+    // Si K=0 (constante), la dérivée est 0 (ordre 0).
+    int new_K = (p->K > 0) ? p->K - 1 : 0;
+    
+    Polynomial * deriv = create_polynomial(new_K);
+    if (deriv == NULL) return NULL;
+
+    if (p->K == 0) {
+        // Dérivée d'une constante est 0
+        deriv->coeff[0] =  0.0;
+    } else {
+        // Formule : (a_i * x^i)' = i * a_i * x^{i-1}
+        for (int i = 1; i <= p->K; i++) {
+            deriv->coeff[i - 1] = p->coeff[i] * (double)i;
+        }
+    }
+
+    return deriv;
+}
+
+/* 6. Dérivée n-ième */
+Polynomial * diff_n_polynomial(Polynomial * p, int n) {
+    if (p == NULL || n < 0) return NULL;
+    if (n == 0) {
+        // Retourne une COPIE du polynôme original pour éviter les problèmes de pointeurs
+        Polynomial * copy = create_polynomial(p->K);
+        for(int i=0; i<=p->K; i++) copy->coeff[i] = p->coeff[i];
+        return copy;
+    }
+
+    // On initialise avec la première dérivée
+    Polynomial * current = diff_polynomial(p);
+
+    // On boucle pour les n-1 dérivées restantes
+    for (int i = 1; i < n; i++) {
+        Polynomial * temp = diff_polynomial(current);
+        
+        // CRUCIAL : Libérer le polynôme intermédiaire pour éviter les fuites mémoire
+        free_polynomial(current); 
+        
+        current = temp;
+        // Si à un moment on obtient NULL (erreur alloc), on arrête
+        if (current == NULL) return NULL;
+    }
+
+    return current;
+}
+
+/* --- Fonction Main pour tester --- */
+int main() {
+    // Création de P(x) = 3x^2 + 5x + 2  (Ordre 2)
+    Polynomial * p = create_polynomial(2);
+    set_coefficient(p, 2, 3.0);
+    set_coefficient(p, 1, 5.0);
+    set_coefficient(p, 0, 2.0);
+
+    printf("P(x) ordre : %d\n", p->K);
+    
+    // Test Eval
+    double x = 2.0;
+    printf("P(%.1f) = %.2f (Attendu: 24.00)\n", x, eval_polynomial(p, x));
+
+    // Test Dérivée : P'(x) = 6x + 5
+    Polynomial * dp = diff_polynomial(p);
+    printf("P'(%.1f) = %.2f (Attendu: 17.00)\n", x, eval_polynomial(dp, x));
+
+    // Test Dérivée Seconde : P''(x) = 6
+    Polynomial * d2p = diff_n_polynomial(p, 2);
+    printf("P''(%.1f) = %.2f (Attendu: 6.00)\n", x, eval_polynomial(d2p, x));
+
+    // Nettoyage
+    free_polynomial(p);
+    free_polynomial(dp);
+    free_polynomial(d2p);
+
+    return 0;
+}
