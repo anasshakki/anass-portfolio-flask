@@ -10,7 +10,7 @@ PROJETS = [
         'description': 'Projet de recherche combinant électronique embarquée et Machine Learning (SVM) pour analyser et améliorer la précision des tirs au basketball.', 
         'tech': 'Python (SVM, Scikit-learn, Pandas), Arduino/MPU-6050', 
         'annee': 2025,
-'pdf': 'Projet SVM.pdf',
+'pdf': 'Projet_SVM.pdf',
         'github_url': 'https://github.com/anasshakki', 
         'details': [
             {'titre': 'Problématique', 'texte': 'Comment les données collectées par un capteur MPU-6050 et la classification par Machine à Vecteurs de Support (SVM) peuvent-elles être utilisées pour analyser et améliorer la précision des tirs ?'},
