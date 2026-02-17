@@ -8,7 +8,7 @@ PROJETS = [
         'id': 1, 
         'nom': 'Amélioration des performances de tir (ML)', 
         'description': 'Projet de recherche combinant électronique embarquée et Machine Learning (SVM) pour analyser et améliorer la précision des tirs au basketball.', 
-        'tech': 'Python (SVM, Scikit-learn, Pandas), Arduino/MPU-6050, 
+        'tech': 'Python (SVM, Scikit-learn, Pandas), Arduino/MPU-6050', 
         'annee': 2025,
 'pdf': 'Projet SVM.pdf',
         'github_url': 'https://github.com/anasshakki', 
